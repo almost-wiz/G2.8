@@ -1,0 +1,29 @@
+sudo su
+
+mkdir /var/data
+cd /var/data
+
+groupadd bookkeepers
+groupadd storekeepers
+groupadd developers
+
+useradd -p admin admin
+useradd -G bookkeepers -p bookkeeper1 bookkeeper1
+useradd -G storekeepers -p storekeeper1 storekeeper1
+useradd -G developers -p developer1 developer1
+
+mkdir invoices
+mkdir web
+mkdir store
+
+chmod 775 invoices
+chmod 775 web
+chmod 775 store
+
+chown admin invoices
+chown admin store
+chown admin web
+
+chgrp bookkeepers invoices
+chgrp storekeepers store
+chgrp developers web
